@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Card: Equatable {
+public struct Card: Hashable {
 
     public static func ==(lhs: Card, rhs: Card) -> Bool {
         if (lhs.number != rhs.number) {
@@ -17,6 +17,12 @@ public struct Card: Equatable {
             return false
         }
         return true
+    }
+
+    public var hashValue: Int {
+        get {
+            return number.hashValue ^ shape.hashValue ^ color.hashValue ^ shading.hashValue &* 16777619
+        }
     }
 
     let number: Int
