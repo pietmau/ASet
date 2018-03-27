@@ -8,17 +8,27 @@ class CardView: UIView {
     private var card: Card? = nil
     var isSelected = false
 
-    init(card: Card) {
-        super.init(frame: CGRect.zero)
+    convenience init(card: Card) {
+        self.init(frame: CGRect.zero)
         self.card = card
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    private func setup() {
+        backgroundColor = UIColor.white.withAlphaComponent(CGFloat(0))
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
     }
 
     override func draw(_ rect: CGRect) {
-        layer.backgroundColor = UIColor.cyan.cgColor
+
         drawBackground(rect: rect)
         drawSymbols()
     }

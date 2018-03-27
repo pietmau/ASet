@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39672266FC5E75FBE2103F5F /* CardRendererImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3967219474552CD870109AA8 /* CardRendererImpl.swift */; };
 		396722D31AC064482074754E /* DealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672FC2849C2143E6311A8C /* DealTests.swift */; };
 		3967233C8C915FDCDF6F1EC9 /* Positivematcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672492679FC89243810F33 /* Positivematcher.swift */; };
 		39672476EB747F92190351AC /* NegativeMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672AD83B77AD8CFC92F04E /* NegativeMatcher.swift */; };
@@ -18,7 +17,6 @@
 		3967278CC92EC4F3CFB6F06D /* Matcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672FC51AB81A825273DEC4 /* Matcher.swift */; };
 		396727FE52960CB1B3385FF1 /* MatcherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672D66F4A5CB9913FFC5BE /* MatcherTest.swift */; };
 		39672864EA873539B03B2E83 /* SetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3967224BFB78B1A50D87B68E /* SetTests.swift */; };
-		396729C9E1E5B19BC8A994A5 /* CardRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396724D350203B437065230B /* CardRenderer.swift */; };
 		39672A0A5D1982BC75CC8A2F /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672AF8108E1C7ADCA1C576 /* GridView.swift */; };
 		39672B585C54A975E6E632EA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672B547EA1844F911AC74E /* Card.swift */; };
 		39672B9E318E7390893E46AE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396725550C1236C5B636D9A1 /* GameView.swift */; };
@@ -41,10 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3967219474552CD870109AA8 /* CardRendererImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRendererImpl.swift; sourceTree = "<group>"; };
 		3967224BFB78B1A50D87B68E /* SetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTests.swift; sourceTree = "<group>"; };
 		39672492679FC89243810F33 /* Positivematcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Positivematcher.swift; sourceTree = "<group>"; };
-		396724D350203B437065230B /* CardRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardRenderer.swift; sourceTree = "<group>"; };
 		396724DBF2492C645E89CAFE /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		396725550C1236C5B636D9A1 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		396725A27198D08876AB7A91 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -111,8 +107,6 @@
 		9C9D3702205C1BAF00E2C4C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				396724D350203B437065230B /* CardRenderer.swift */,
-				3967219474552CD870109AA8 /* CardRendererImpl.swift */,
 				39672FDAE267CE6268C7E9E5 /* Grid.swift */,
 				39672AF8108E1C7ADCA1C576 /* GridView.swift */,
 				396725550C1236C5B636D9A1 /* GameView.swift */,
@@ -287,8 +281,6 @@
 				396724AD42AEA829B5489783 /* MatcherImpl.swift in Sources */,
 				3967233C8C915FDCDF6F1EC9 /* Positivematcher.swift in Sources */,
 				39672476EB747F92190351AC /* NegativeMatcher.swift in Sources */,
-				396729C9E1E5B19BC8A994A5 /* CardRenderer.swift in Sources */,
-				39672266FC5E75FBE2103F5F /* CardRendererImpl.swift in Sources */,
 				3967250599910C5DD142D395 /* Grid.swift in Sources */,
 				39672A0A5D1982BC75CC8A2F /* GridView.swift in Sources */,
 				39672B9E318E7390893E46AE /* GameView.swift in Sources */,
