@@ -12,25 +12,42 @@ class GameView: UIView {
 
     var dealtCards: [Card] {
         set {
-            for card in newValue {
-                if (cardsInternal[card] == nil) {
-                    onCardAdded(card)
-                }
-            }
-            for (card, view) in cardsInternal {
-                if (!newValue.contains(card)) {
-                    onCardRemoved(card)
-                }
-            }
+            onCardsSet(newValue: newValue)
         }
         get {
             return []
         }
     }
 
+    private func onCardsSet(newValue: [Card]) {
+        for card in newValue {
+            if (cardsInternal[card] == nil) {
+                onCardAdded(card)
+            }
+        }
+        for (card, view) in cardsInternal {
+            if (!newValue.contains(card)) {
+                onCardRemoved(card)
+            }
+        }
+    }
+
     var selectedtCards: [Card] = [] {
         didSet {
-            //redraw()
+            onCardsSelected(selectedtCards: selectedtCards)
+        }
+    }
+
+    private func onCardsSelected(selectedtCards: [Card]) {
+        for (card, uiview) in cardsInternal {
+            if let view = (uiview as? CardView) {
+                if (selectedtCards.contains(card)) {
+                    view.isSelected = true
+                } else {
+                    view.isSelected = false
+                }
+                view.setNeedsDisplay()
+            }
         }
     }
 
@@ -43,6 +60,7 @@ class GameView: UIView {
 
     private func onCardRemoved(_ card: Card) {
         if let view = cardsInternal[card] {
+            cardsInternal.removeValue(forKey: card)
             view.removeFromSuperview()
         }
     }
@@ -73,18 +91,14 @@ class GameView: UIView {
         subviews[0].frame = bounds
     }
 
-//    private func redraw() {
-//        if let views = grid?.subviews {
-//            for view in views {
-//                view.removeFromSuperview()
-//            }
-//        }
-//        for card in dealtCards {
-//            let cardView: CardView = CardView(card: card)
-//            if (selectedtCards.contains(card)) {
-//                cardView.isSelected = true
-//            }
-//            grid?.addSubview(cardView)
-//        }
-//    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first as? UITouch {
+            let location = touch.location(in: self)
+            for (card, uiview) in cardsInternal {
+                if (uiview.frame.contains(location)) {
+                    callBack?.onCardClicked(card: card)
+                }
+            }
+        }
+    }
 }

@@ -79,11 +79,7 @@ public class GameImpl: Game {
         return matcher.isAMatch(cards: selectedCards)
     }
 
-    public func selectCard(at: Int) {
-        if (at < 0 || at >= dealtCards.count) {
-            return
-        }
-        let card = dealtCards[at]
+    public func selectCard(card: Card) {
         if (selectedCards.count == 3) {
             isAMatchOrNot(card: card)
         } else if (selectedCards.count < 3) {

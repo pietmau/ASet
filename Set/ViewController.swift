@@ -28,8 +28,8 @@ class ViewController: UIViewController, GridViewCallback {
         }
     }
 
-    func onCardClicked(index: Int) {
-        game.selectCard(at: index)
+    func onCardClicked(card: Card) {
+        game.selectCard(card: card)
         updateView()
     }
 }

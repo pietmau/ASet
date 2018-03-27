@@ -8,6 +8,6 @@ public protocol Game {
 
     var canDeal: Bool { get }
     func deal()
-    func selectCard(at: Int)
+    func selectCard(card: Card)
 }
 
