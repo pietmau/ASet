@@ -34,7 +34,12 @@ class GridView: UIView {
         for index in 0..<subviews.count {
             var view: UIView = subviews[index]
             if let frame = grid?[index] {
-                view.frame = frame
+                UIViewPropertyAnimator.runningPropertyAnimator(
+                        withDuration: 0.5,
+                        delay: 0.0,
+                        options: [],
+                        animations: { view.frame = frame }
+                )
             }
         }
     }
