@@ -20,28 +20,49 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZ1-oJ-fR6" customClass="GameView" customModule="Set" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="492"/>
+                                <color key="backgroundColor" red="0.071068557369999993" green="1" blue="0.10520946840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEi-jy-KAh">
-                                <rect key="frame" x="157.5" y="574" width="60" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="otb-wA-QbB"/>
-                                </constraints>
-                                <state key="normal" title="DEAL!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onDealClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D3T-gR-GuR"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="8Cz-kA-cz5">
+                                <rect key="frame" x="38" y="574" width="300" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEi-jy-KAh">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="otb-wA-QbB"/>
+                                            <constraint firstAttribute="width" constant="100" id="y7n-wb-oZa"/>
+                                        </constraints>
+                                        <state key="normal" title="DEAL!">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onDealClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D3T-gR-GuR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLh-bQ-HcF">
+                                        <rect key="frame" x="200" y="0.0" width="100" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="7lZ-wR-Cxy"/>
+                                            <constraint firstAttribute="width" constant="100" id="TjZ-5J-jaQ"/>
+                                        </constraints>
+                                        <state key="normal" title="foo">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onDealClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FTQ-ba-GbE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8Cz-kA-cz5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gj0-2I-ZO0"/>
                             <constraint firstItem="yZ1-oJ-fR6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Jnk-PO-gob"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yZ1-oJ-fR6" secondAttribute="bottom" constant="155" id="PH4-uQ-3Jo"/>
+                            <constraint firstItem="8Cz-kA-cz5" firstAttribute="top" secondItem="yZ1-oJ-fR6" secondAttribute="bottom" constant="62" id="Qoh-Da-xLU"/>
                             <constraint firstItem="yZ1-oJ-fR6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="TCZ-Ds-aQc"/>
-                            <constraint firstItem="gEi-jy-KAh" firstAttribute="top" secondItem="yZ1-oJ-fR6" secondAttribute="bottom" constant="62" id="bT2-cw-sVG"/>
-                            <constraint firstItem="gEi-jy-KAh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="idf-Ek-a4x"/>
                             <constraint firstItem="yZ1-oJ-fR6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="k6J-KN-CRR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
