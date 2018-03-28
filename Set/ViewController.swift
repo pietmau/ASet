@@ -1,7 +1,7 @@
 import UIKit
 
 class ViewController: UIViewController, GridViewCallback {
-    var game: Game = GameImpl(matcher: Positivematcher())
+    var game: Game = Game(matcher: Positivematcher())
 
     @IBOutlet weak var gameView: GameView!
 
@@ -29,8 +29,35 @@ class ViewController: UIViewController, GridViewCallback {
     }
 
     func onCardClicked(card: Card) {
-        game.selectCard(card: card)
+        selectCard(card: card)
         updateView()
+    }
+
+    public func selectCard(card: Card) {
+        if (game.selectedCards.count == 3) {
+            isAMatchOrNot(card: card)
+        } else if (game.selectedCards.count < 3) {
+            game.selectOrDeselect(card)
+        }
+    }
+
+    private func isAMatchOrNot(card: Card) {
+        if (game.selectedCards.contains(card)) {
+            return
+        }
+        if (game.isAMatch()) {
+            onIsAMatch(card: card)
+        }
+        game.setSelectedOnlyLastCard(card: card)
+    }
+
+
+    private func onIsAMatch(card: Card) {
+        game.matchedCards.append(contentsOf: game.selectedCards)
+        if (game.canDeal) {
+            game.deal()
+        }
+        game.removeMatched()
     }
 }
 

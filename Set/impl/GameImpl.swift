@@ -1,6 +1,6 @@
 import Foundation
 
-public class GameImpl: Game {
+public class Game {
     public var dealtCards: [Card] = []
     public var selectedCards: [Card] = []
     public var remainingCards: [Card] = []
@@ -22,11 +22,7 @@ public class GameImpl: Game {
     }
 
     public func deal() {
-        dealInternal()
         unselctCards()
-    }
-
-    private func dealInternal() {
         var toBeDealt = getThreeCards()
         for index in dealtCards.indices {
             if (toBeDealt.isEmpty) {
@@ -52,21 +48,11 @@ public class GameImpl: Game {
         return result
     }
 
-    private func unselctCards() {
+    func unselctCards() {
         selectedCards.removeAll()
     }
 
-    private func onIsAMatch(card: Card) {
-        matchedCards.append(contentsOf: selectedCards)
-        onIsNotAMatch(card: card)
-        if (canDeal) {
-            dealInternal()
-        } else {
-            removeMatched()
-        }
-    }
-
-    private func removeMatched() {
+    func removeMatched() {
         for card in dealtCards {
             if matchedCards.contains(card) {
                 let index = dealtCards.index(of: card)!
@@ -75,31 +61,11 @@ public class GameImpl: Game {
         }
     }
 
-    private func isAMatch() -> Bool {
+    func isAMatch() -> Bool {
         return matcher.isAMatch(cards: selectedCards)
     }
 
-    public func selectCard(card: Card) {
-        if (selectedCards.count == 3) {
-            isAMatchOrNot(card: card)
-        } else if (selectedCards.count < 3) {
-            selectOrDeselect(card)
-        }
-
-    }
-
-    private func isAMatchOrNot(card: Card) {
-        if (selectedCards.contains(card)) {
-            return
-        }
-        if (isAMatch()) {
-            onIsAMatch(card: card)
-        } else {
-            onIsNotAMatch(card: card)
-        }
-    }
-
-    private func selectOrDeselect(_ card: Card) {
+    func selectOrDeselect(_ card: Card) {
         if (selectedCards.contains(card)) {
             deselect(card: card)
         } else {
@@ -116,7 +82,7 @@ public class GameImpl: Game {
         selectedCards.remove(at: index!)
     }
 
-    private func onIsNotAMatch(card: Card) {
+     func setSelectedOnlyLastCard(card: Card) {
         if (selectedCards.contains(card)) {
             return
         } else {

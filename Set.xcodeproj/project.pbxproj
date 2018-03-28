@@ -20,7 +20,6 @@
 		39672A0A5D1982BC75CC8A2F /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672AF8108E1C7ADCA1C576 /* GridView.swift */; };
 		39672B585C54A975E6E632EA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672B547EA1844F911AC74E /* Card.swift */; };
 		39672B9E318E7390893E46AE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396725550C1236C5B636D9A1 /* GameView.swift */; };
-		39672E3F52DB597C41A8432D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396724DBF2492C645E89CAFE /* Game.swift */; };
 		9CDBF9D12058005C009CED08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBF9D02058005C009CED08 /* AppDelegate.swift */; };
 		9CDBF9D32058005C009CED08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBF9D22058005C009CED08 /* ViewController.swift */; };
 		9CDBF9D62058005C009CED08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBF9D42058005C009CED08 /* Main.storyboard */; };
@@ -41,7 +40,6 @@
 /* Begin PBXFileReference section */
 		3967224BFB78B1A50D87B68E /* SetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTests.swift; sourceTree = "<group>"; };
 		39672492679FC89243810F33 /* Positivematcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Positivematcher.swift; sourceTree = "<group>"; };
-		396724DBF2492C645E89CAFE /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		396725550C1236C5B636D9A1 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		396725A27198D08876AB7A91 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		396726B6D40A8369D43741A0 /* MatcherImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatcherImpl.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		9CDBF9E2205827CE009CED08 /* game */ = {
 			isa = PBXGroup;
 			children = (
-				396724DBF2492C645E89CAFE /* Game.swift */,
 				39672B547EA1844F911AC74E /* Card.swift */,
 				39672FC51AB81A825273DEC4 /* Matcher.swift */,
 			);
@@ -274,7 +271,6 @@
 			files = (
 				9CDBF9D32058005C009CED08 /* ViewController.swift in Sources */,
 				9CDBF9D12058005C009CED08 /* AppDelegate.swift in Sources */,
-				39672E3F52DB597C41A8432D /* Game.swift in Sources */,
 				39672B585C54A975E6E632EA /* Card.swift in Sources */,
 				396726AC0A7EBF1CEFF19B9E /* GameImpl.swift in Sources */,
 				3967278CC92EC4F3CFB6F06D /* Matcher.swift in Sources */,
