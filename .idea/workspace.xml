@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db6ed8fe-2e68-49b4-9955-624e538927cb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Set/View/GameView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Set/View/GameView.swift" afterDir="false" />
-    </list>
+    <list default="true" id="db6ed8fe-2e68-49b4-9955-624e538927cb" name="Default" comment="" />
     <ignored path="$USER_HOME$/Library/Developer/Xcode/DerivedData/Set-abhbhuwvvrkzyeepoqjbtrqylhan/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,29 +13,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_72B22A00-DD1C-4D99-988D-110E4F6F640A" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameImpl.swift" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameImpl.swift" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Set/impl/GameImpl.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-965">
-              <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewController.swift" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Set/ViewController.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameView.swift" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Set/View/GameView.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="219">
+              <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -79,8 +59,8 @@
         <option value="$PROJECT_DIR$/Set/View/CardView.swift" />
         <option value="$PROJECT_DIR$/Set/View/GridView.swift" />
         <option value="$PROJECT_DIR$/Set/ViewController.swift" />
-        <option value="$PROJECT_DIR$/Set/impl/GameImpl.swift" />
         <option value="$PROJECT_DIR$/Set/View/GameView.swift" />
+        <option value="$PROJECT_DIR$/Set/impl/GameImpl.swift" />
       </list>
     </option>
   </component>
@@ -103,7 +83,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,6 +138,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -238,6 +218,7 @@
       <workItem from="1521734954053" duration="9996000" />
       <workItem from="1522050843170" duration="19595000" />
       <workItem from="1522156172885" duration="9397000" />
+      <workItem from="1522260609178" duration="948000" />
     </task>
     <servers />
   </component>
@@ -274,44 +255,31 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133818000" />
+    <option name="totallyTimeSpent" value="135820000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="821" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="813" extended-state="6" />
     <layout>
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21353066" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32596686" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32882273" />
-      <window_info anchor="right" x="0" y="0" width="310" height="621" id="Documentation" side_tool="true" weight="0.3297568" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34817815" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32872927" />
-      <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2167382" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34817815" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5441989" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3282123" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5432961" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21353066" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34817815" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32872927" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5441989" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" x="0" y="0" width="310" height="621" id="Documentation" order="4" side_tool="true" weight="0.3297568" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32882273" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3301105" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32596686" />
-      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -608,13 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Set/impl/GameImpl.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-965">
-          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Set/ViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -624,8 +585,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Set/View/GameView.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="159">
+          <caret line="100" column="27" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Set/impl/GameImpl.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
         </state>
       </provider>
     </entry>

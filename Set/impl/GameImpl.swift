@@ -50,7 +50,6 @@ public class Game {
         if (canDeal) {
             dealInternal()
         }
-        unselctCards()
         removeMatched()
     }
 

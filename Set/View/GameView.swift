@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 class GameView: UIView {
+    private let ENERING_DURATION = 0.5
     private var cards: [Card] = []
     private var views: [CardView] = []
 
@@ -82,7 +83,11 @@ class GameView: UIView {
         let cardView: CardView = CardView(card: card)
         cards.append(card)
         views.append(cardView)
+        cardView.alpha = 0
         grid?.addSubview(cardView)
+        Timer.scheduledTimer(withTimeInterval: ENERING_DURATION, repeats: false, block: { _ in
+            self.animateEnteringView(newView: cardView)
+        })
     }
 
     private func repalceOldWitNew(old: Card, new: Card, at: Int) {
@@ -100,7 +105,7 @@ class GameView: UIView {
     private func animateEnteringView(newView: CardView) {
         newView.alpha = 0
         UIViewPropertyAnimator.runningPropertyAnimator(
-                withDuration: 0.5,
+                withDuration: ENERING_DURATION,
                 delay: 0.0,
                 options: [],
                 animations: { newView.alpha = 1 }
