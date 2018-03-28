@@ -47,7 +47,14 @@ public class Game {
 
 
     public func deal() {
+        if (canDeal) {
+            dealInternal()
+        }
         unselctCards()
+        removeMatched()
+    }
+
+    private func dealInternal() {
         var toBeDealt = getThreeCards()
         for index in dealtCards.indices {
             if (toBeDealt.isEmpty) {

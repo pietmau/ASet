@@ -39,15 +39,15 @@ class ViewController: UIViewController, GridViewCallback, GameCallback {
         updateView()
     }
 
-    func onMatch(){
-        gameView.matched = game.matchedCards
+    func onMatch() {
+        gameView.setMatched(game.matchedCards, closure: { _ in
+            self.deal()
+        })
     }
 
     private func deal() {
-        if (game.canDeal) {
-            game.deal()
-        }
-        game.removeMatched()
+        game.deal()
+        updateView()
     }
 }
 

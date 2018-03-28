@@ -10,7 +10,7 @@ class GameView: UIView {
             return []
         }
         set {
-            setMatched(newValue)
+            setMatched(newValue, closure: { _ in})
         }
     }
 
@@ -73,25 +73,27 @@ class GameView: UIView {
         views[at] = newView
     }
 
-    func setMatched(_ matched: [Card]) {
+    func setMatched(_ matched: [Card], closure: @escaping (UIViewAnimatingPosition) -> Void) {
+        var toBeAnimated: [UIView] = []
         for i in cards.indices {
-            var toBeAnimated: [UIView] = []
+
             let card = cards[i]
             if (matched.contains(card)) {
                 let view = views[i]
                 toBeAnimated.append(view)
             }
-            UIViewPropertyAnimator.runningPropertyAnimator(
-                    withDuration: 0.5,
-                    delay: 0.0,
-                    options: [],
-                    animations: {
-                        toBeAnimated.forEach { view in
-                            view.alpha = 0
-                        }
-                    }
-            )
         }
+        UIViewPropertyAnimator.runningPropertyAnimator(
+                withDuration: 0.5,
+                delay: 0.0,
+                options: [],
+                animations: {
+                    toBeAnimated.forEach { view in
+                        view.alpha = 0
+                    }
+                },
+                completion: closure
+        )
     }
 
     private func onCardsRemoved(_ newCards: [Card]) {
