@@ -10,7 +10,7 @@ class GameView: UIView {
             return []
         }
         set {
-            setMatched(newValue, closure: { _ in})
+            setMatched(newValue, closure: { _ in })
         }
     }
 
@@ -45,9 +45,20 @@ class GameView: UIView {
         }
     }
 
-    var selectedtCards: [Card] = [] {
-        didSet {
-            onCardsSelected(selectedtCards: selectedtCards)
+    private func onCardsRemoved(_ newCards: [Card]) {
+        for (index, card) in cards.enumerated().reversed() {
+            let card = cards[index]
+            if (!newCards.contains(card)) {
+                onCardRemoved(index: index)
+            }
+        }
+    }
+
+    private func onCardsAdded(_ newCards: [Card]) {
+        for card in newCards {
+            if (!cards.contains(card)) {
+                onCardAdded(card)
+            }
         }
     }
 
@@ -57,9 +68,21 @@ class GameView: UIView {
             let oldCard = cards[i]
             if (newCard != oldCard) {
                 repalceOldWitNew(old: oldCard, new: newCard, at: i)
-
             }
         }
+    }
+
+    private func onCardRemoved(index: Int) {
+        cards.remove(at: index)
+        let view = views.remove(at: index)
+        view.removeFromSuperview()
+    }
+
+    private func onCardAdded(_ card: Card) {
+        let cardView: CardView = CardView(card: card)
+        cards.append(card)
+        views.append(cardView)
+        grid?.addSubview(cardView)
     }
 
     private func repalceOldWitNew(old: Card, new: Card, at: Int) {
@@ -71,12 +94,22 @@ class GameView: UIView {
         grid?.setNeedsLayout()
         cards[at] = new
         views[at] = newView
+        animateEnteringView(newView: newView)
+    }
+
+    private func animateEnteringView(newView: CardView) {
+        newView.alpha = 0
+        UIViewPropertyAnimator.runningPropertyAnimator(
+                withDuration: 0.5,
+                delay: 0.0,
+                options: [],
+                animations: { newView.alpha = 1 }
+        )
     }
 
     func setMatched(_ matched: [Card], closure: @escaping (UIViewAnimatingPosition) -> Void) {
         var toBeAnimated: [UIView] = []
         for i in cards.indices {
-
             let card = cards[i]
             if (matched.contains(card)) {
                 let view = views[i]
@@ -96,29 +129,6 @@ class GameView: UIView {
         )
     }
 
-    private func onCardsRemoved(_ newCards: [Card]) {
-        for (index, card) in cards.enumerated().reversed() {
-            let card = cards[index]
-            if (!newCards.contains(card)) {
-                onCardRemoved(index: index)
-            }
-        }
-    }
-
-    private func onCardRemoved(index: Int) {
-        cards.remove(at: index)
-        let view = views.remove(at: index)
-        view.removeFromSuperview()
-    }
-
-    private func onCardsAdded(_ newCards: [Card]) {
-        for card in newCards {
-            if (!cards.contains(card)) {
-                onCardAdded(card)
-            }
-        }
-    }
-
     private func onCardsSelected(selectedtCards: [Card]) {
         for index in 0..<cards.count {
             var view = views[index]
@@ -135,13 +145,6 @@ class GameView: UIView {
         get {
             return subviews[0] as? GridView
         }
-    }
-
-    private func onCardAdded(_ card: Card) {
-        let cardView: CardView = CardView(card: card)
-        cards.append(card)
-        views.append(cardView)
-        grid?.addSubview(cardView)
     }
 
     override init(frame: CGRect) {
@@ -178,4 +181,11 @@ class GameView: UIView {
             }
         }
     }
+
+    var selectedtCards: [Card] = [] {
+        didSet {
+            onCardsSelected(selectedtCards: selectedtCards)
+        }
+    }
+
 }
