@@ -46,26 +46,36 @@ class GameView: UIView {
             let newCard = newValue[i]
             let oldCard = cards[i]
             if (newCard != oldCard) {
-                let newView: CardView = CardView(card: newCard)
-                let oldView = views[i]
-                newView.frame = oldView.frame
-                grid?.insertSubview(newView, at: i)
-                oldView.removeFromSuperview()
-                grid?.setNeedsLayout()
-                cards[i] = newCard
-                views[i] = newView
+                repalceOldWitNew(old:oldCard, new:newCard, at:i)
+
             }
         }
     }
 
+    private func repalceOldWitNew(old: Card, new: Card, at: Int) {
+        let newView: CardView = CardView(card: new)
+        let oldView = views[at]
+        newView.frame = oldView.frame
+        grid?.insertSubview(newView, at: at)
+        oldView.removeFromSuperview()
+        grid?.setNeedsLayout()
+        cards[at] = new
+        views[at] = newView
+    }
+
     private func onCardsRemoved(_ newCards: [Card]) {
-        for index in 0..<cards.count {
+        for (index, card) in cards.enumerated().reversed() {
             let card = cards[index]
             if (!newCards.contains(card)) {
-                onCardRemoved(index)
-                break
+                onCardRemoved(index: index)
             }
         }
+    }
+
+    private func onCardRemoved(index: Int) {
+        cards.remove(at: index)
+        let view = views.remove(at: index)
+        view.removeFromSuperview()
     }
 
     private func onCardsAdded(_ newCards: [Card]) {
@@ -92,13 +102,6 @@ class GameView: UIView {
         get {
             return subviews[0] as? GridView
         }
-    }
-
-
-    private func onCardRemoved(_ index: Int) {
-        cards.remove(at: index)
-        let view = views.remove(at: index)
-        view.removeFromSuperview()
     }
 
     private func onCardAdded(_ card: Card) {
@@ -131,11 +134,13 @@ class GameView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first as? UITouch {
             let location = touch.location(in: self)
+            print(views.indices)
             for index in views.indices {
                 let view = views[index]
                 let card = cards[index]
                 if (view.frame.contains(location)) {
                     callBack?.onCardClicked(card: card)
+                    return
                 }
             }
         }
