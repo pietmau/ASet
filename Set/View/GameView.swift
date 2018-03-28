@@ -41,8 +41,21 @@ class GameView: UIView {
         }
     }
 
-    private func onCardsMaybeCahnged(_ value: [Card]) {
-        
+    private func onCardsMaybeCahnged(_ newValue: [Card]) {
+        for i in newValue.indices {
+            let newCard = newValue[i]
+            let oldCard = cards[i]
+            if (newCard != oldCard) {
+                let newView: CardView = CardView(card: newCard)
+                let oldView = views[i]
+                newView.frame = oldView.frame
+                grid?.insertSubview(newView, at: i)
+                oldView.removeFromSuperview()
+                grid?.setNeedsLayout()
+                cards[i] = newCard
+                views[i] = newView
+            }
+        }
     }
 
     private func onCardsRemoved(_ newCards: [Card]) {
@@ -118,7 +131,7 @@ class GameView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first as? UITouch {
             let location = touch.location(in: self)
-            for index in 0..<views.count {
+            for index in views.indices {
                 let view = views[index]
                 let card = cards[index]
                 if (view.frame.contains(location)) {
