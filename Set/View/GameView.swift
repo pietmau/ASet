@@ -21,24 +21,45 @@ class GameView: UIView {
     }
 
     private func onCardsSet(newValue: [Card]) {
-        for index in 0..<newValue.count {
-
+        if (newValue.count > cards.count) {
+            onCardsAdded(newValue)
+            return
         }
-//        for card in newValue {
-//            if (cardsInternal[card] == nil) {
-//                onCardAdded(card)
-//
-//        }
-//        for (card, view) in cardsInternal {
-//            if (!newValue.contains(card)) {
-//                onCardRemoved(card)
-//            }
-//        }
+        if (newValue.count < cards.count) {
+            onCardsRemoved(newValue)
+            return
+        }
+        if (newValue.count == cards.count) {
+            onCardsMaybeCahnged(newValue)
+            return
+        }
     }
 
     var selectedtCards: [Card] = [] {
         didSet {
             onCardsSelected(selectedtCards: selectedtCards)
+        }
+    }
+
+    private func onCardsMaybeCahnged(_ value: [Card]) {
+        
+    }
+
+    private func onCardsRemoved(_ newCards: [Card]) {
+        for index in 0..<cards.count {
+            let card = cards[index]
+            if (!newCards.contains(card)) {
+                onCardRemoved(index)
+                break
+            }
+        }
+    }
+
+    private func onCardsAdded(_ newCards: [Card]) {
+        for card in newCards {
+            if (!cards.contains(card)) {
+                onCardAdded(card)
+            }
         }
     }
 
@@ -61,17 +82,17 @@ class GameView: UIView {
     }
 
 
-    private func onCardRemoved(_ card: Card) {
-//        if let view = cardsInternal[card] {
-//            cardsInternal.removeValue(forKey: card)
-//            view.removeFromSuperview()
-//        }
+    private func onCardRemoved(_ index: Int) {
+        cards.remove(at: index)
+        let view = views.remove(at: index)
+        view.removeFromSuperview()
     }
 
     private func onCardAdded(_ card: Card) {
-//        let cardView: CardView = CardView(card: card)
-//        cardsInternal[card] = cardView
-//        grid?.addSubview(cardView)
+        let cardView: CardView = CardView(card: card)
+        cards.append(card)
+        views.append(cardView)
+        grid?.addSubview(cardView)
     }
 
     override init(frame: CGRect) {
