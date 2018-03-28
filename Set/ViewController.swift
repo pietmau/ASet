@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController, GridViewCallback {
+class ViewController: UIViewController, GridViewCallback, GameCallback {
     var game: Game = Game(matcher: Positivematcher())
 
     @IBOutlet weak var gameView: GameView!
@@ -15,6 +15,7 @@ class ViewController: UIViewController, GridViewCallback {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameView.callBack = self
+        game.callback = self
         updateView()
     }
 
@@ -34,26 +35,15 @@ class ViewController: UIViewController, GridViewCallback {
     }
 
     public func selectCard(card: Card) {
-        if (game.selectedCards.count == 3) {
-            isAMatchOrNot(card: card)
-        } else if (game.selectedCards.count < 3) {
-            game.selectOrDeselect(card)
-        }
+        game.selectCard(card: card)
+        updateView()
     }
 
-    private func isAMatchOrNot(card: Card) {
-        if (game.selectedCards.contains(card)) {
-            return
-        }
-        if (game.isAMatch()) {
-            onIsAMatch(card: card)
-        }
-        game.setSelectedOnlyLastCard(card: card)
+    func onMatch(){
+        gameView.matched = game.matchedCards
     }
 
-
-    private func onIsAMatch(card: Card) {
-        game.matchedCards.append(contentsOf: game.selectedCards)
+    private func deal() {
         if (game.canDeal) {
             game.deal()
         }

@@ -5,6 +5,15 @@ class GameView: UIView {
     private var cards: [Card] = []
     private var views: [CardView] = []
 
+    var matched: [Card] {
+        get {
+            return []
+        }
+        set {
+            setMatched(newValue)
+        }
+    }
+
     var callBack: GridViewCallback? = nil {
         didSet {
             grid?.callback = callBack
@@ -19,6 +28,7 @@ class GameView: UIView {
             return []
         }
     }
+
 
     private func onCardsSet(newValue: [Card]) {
         if (newValue.count > cards.count) {
@@ -46,7 +56,7 @@ class GameView: UIView {
             let newCard = newValue[i]
             let oldCard = cards[i]
             if (newCard != oldCard) {
-                repalceOldWitNew(old:oldCard, new:newCard, at:i)
+                repalceOldWitNew(old: oldCard, new: newCard, at: i)
 
             }
         }
@@ -61,6 +71,27 @@ class GameView: UIView {
         grid?.setNeedsLayout()
         cards[at] = new
         views[at] = newView
+    }
+
+    func setMatched(_ matched: [Card]) {
+        for i in cards.indices {
+            var toBeAnimated: [UIView] = []
+            let card = cards[i]
+            if (matched.contains(card)) {
+                let view = views[i]
+                toBeAnimated.append(view)
+            }
+            UIViewPropertyAnimator.runningPropertyAnimator(
+                    withDuration: 0.5,
+                    delay: 0.0,
+                    options: [],
+                    animations: {
+                        toBeAnimated.forEach { view in
+                            view.alpha = 0
+                        }
+                    }
+            )
+        }
     }
 
     private func onCardsRemoved(_ newCards: [Card]) {
