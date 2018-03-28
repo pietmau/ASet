@@ -2,7 +2,8 @@ import Foundation
 import UIKit
 
 class GameView: UIView {
-    private var cardsInternal: [Card: UIView] = [:]
+    private var cards: [Card] = []
+    private var views: [CardView] = []
 
     var callBack: GridViewCallback? = nil {
         didSet {
@@ -20,16 +21,19 @@ class GameView: UIView {
     }
 
     private func onCardsSet(newValue: [Card]) {
-        for card in newValue {
-            if (cardsInternal[card] == nil) {
-                onCardAdded(card)
-            }
+        for index in 0..<newValue.count {
+
         }
-        for (card, view) in cardsInternal {
-            if (!newValue.contains(card)) {
-                onCardRemoved(card)
-            }
-        }
+//        for card in newValue {
+//            if (cardsInternal[card] == nil) {
+//                onCardAdded(card)
+//
+//        }
+//        for (card, view) in cardsInternal {
+//            if (!newValue.contains(card)) {
+//                onCardRemoved(card)
+//            }
+//        }
     }
 
     var selectedtCards: [Card] = [] {
@@ -39,15 +43,14 @@ class GameView: UIView {
     }
 
     private func onCardsSelected(selectedtCards: [Card]) {
-        for (card, uiview) in cardsInternal {
-            if let view = (uiview as? CardView) {
-                if (selectedtCards.contains(card)) {
-                    view.isSelected = true
-                } else {
-                    view.isSelected = false
-                }
-                view.setNeedsDisplay()
+        for index in 0..<cards.count {
+            var view = views[index]
+            if (selectedtCards.contains(cards[index])) {
+                view.isSelected = true
+            } else {
+                view.isSelected = false
             }
+            view.setNeedsDisplay()
         }
     }
 
@@ -59,16 +62,16 @@ class GameView: UIView {
 
 
     private func onCardRemoved(_ card: Card) {
-        if let view = cardsInternal[card] {
-            cardsInternal.removeValue(forKey: card)
-            view.removeFromSuperview()
-        }
+//        if let view = cardsInternal[card] {
+//            cardsInternal.removeValue(forKey: card)
+//            view.removeFromSuperview()
+//        }
     }
 
     private func onCardAdded(_ card: Card) {
-        let cardView: CardView = CardView(card: card)
-        cardsInternal[card] = cardView
-        grid?.addSubview(cardView)
+//        let cardView: CardView = CardView(card: card)
+//        cardsInternal[card] = cardView
+//        grid?.addSubview(cardView)
     }
 
     override init(frame: CGRect) {
@@ -94,8 +97,10 @@ class GameView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first as? UITouch {
             let location = touch.location(in: self)
-            for (card, uiview) in cardsInternal {
-                if (uiview.frame.contains(location)) {
+            for index in 0..<views.count {
+                let view = views[index]
+                let card = cards[index]
+                if (view.frame.contains(location)) {
                     callBack?.onCardClicked(card: card)
                 }
             }
