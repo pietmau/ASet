@@ -15,6 +15,7 @@ class ViewController: UIViewController, GridViewCallback, GameCallback {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameView.callBack = self
+        gameView.deckPosition = dealButton.frame
         game.callback = self
         updateView()
     }
@@ -40,9 +41,8 @@ class ViewController: UIViewController, GridViewCallback, GameCallback {
     }
 
     func onMatch() {
-        gameView.setMatched(game.matchedCards, closure: { _ in
-            self.deal()
-        })
+        gameView.animateExit(game.matchedCards)
+        deal()
     }
 
     private func deal() {

@@ -49,9 +49,6 @@
                                         <state key="normal" title="foo">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="onDealClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FTQ-ba-GbE"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

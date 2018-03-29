@@ -2,7 +2,8 @@ import Foundation
 import UIKit
 
 class GameView: UIView {
-    private let ENERING_DURATION = 0.5
+    var deckPosition: CGRect? = nil
+    public static let ENTERING_DURATION = 0.5
     private var cards: [Card] = []
     private var views: [CardView] = []
 
@@ -11,7 +12,7 @@ class GameView: UIView {
             return []
         }
         set {
-            setMatched(newValue, closure: { _ in })
+            animateExit(newValue)
         }
     }
 
@@ -68,7 +69,7 @@ class GameView: UIView {
             let newCard = newValue[i]
             let oldCard = cards[i]
             if (newCard != oldCard) {
-                repalceOldWitNew(old: oldCard, new: newCard, at: i)
+                onCardReplaced(old: oldCard, new: newCard, at: i)
             }
         }
     }
@@ -83,14 +84,11 @@ class GameView: UIView {
         let cardView: CardView = CardView(card: card)
         cards.append(card)
         views.append(cardView)
-        cardView.alpha = 0
         grid?.addSubview(cardView)
-        Timer.scheduledTimer(withTimeInterval: ENERING_DURATION, repeats: false, block: { _ in
-            self.animateEnteringView(newView: cardView)
-        })
+        animateEntering(newView: cardView)
     }
 
-    private func repalceOldWitNew(old: Card, new: Card, at: Int) {
+    private func onCardReplaced(old: Card, new: Card, at: Int) {
         let newView: CardView = CardView(card: new)
         let oldView = views[at]
         newView.frame = oldView.frame
@@ -99,39 +97,36 @@ class GameView: UIView {
         grid?.setNeedsLayout()
         cards[at] = new
         views[at] = newView
-        animateEnteringView(newView: newView)
+        animateEntering(newView: newView)
     }
 
-    private func animateEnteringView(newView: CardView) {
+    private func animateEntering(newView: CardView) {
         newView.alpha = 0
-        UIViewPropertyAnimator.runningPropertyAnimator(
-                withDuration: ENERING_DURATION,
-                delay: 0.0,
-                options: [],
-                animations: { newView.alpha = 1 }
-        )
+        Timer.scheduledTimer(withTimeInterval: GameView.ENTERING_DURATION, repeats: false, block: { _ in
+            UIViewPropertyAnimator.runningPropertyAnimator(
+                    withDuration: GameView.ENTERING_DURATION,
+                    delay: 0.0,
+                    animations: { newView.alpha = 1 }
+            )
+        })
     }
 
-    func setMatched(_ matched: [Card], closure: @escaping (UIViewAnimatingPosition) -> Void) {
-        var toBeAnimated: [UIView] = []
+    func animateExit(_ matched: [Card]) {
         for i in cards.indices {
-            let card = cards[i]
-            if (matched.contains(card)) {
+            if (matched.contains(cards[i])) {
                 let view = views[i]
-                toBeAnimated.append(view)
+                animateAway(view)
             }
         }
+    }
+
+    private func animateAway(_ view: UIView) {
         UIViewPropertyAnimator.runningPropertyAnimator(
-                withDuration: 0.5,
+                withDuration: GameView.ENTERING_DURATION,
                 delay: 0.0,
-                options: [],
                 animations: {
-                    toBeAnimated.forEach { view in
-                        view.alpha = 0
-                    }
-                },
-                completion: closure
-        )
+                    view.alpha = 0
+                })
     }
 
     private func onCardsSelected(selectedtCards: [Card]) {
@@ -175,7 +170,6 @@ class GameView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first as? UITouch {
             let location = touch.location(in: self)
-            print(views.indices)
             for index in views.indices {
                 let view = views[index]
                 let card = cards[index]
